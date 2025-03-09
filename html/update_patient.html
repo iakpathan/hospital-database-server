@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Patient</title>
+  <link rel="stylesheet" href="..\css\styles.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <h1>Hospital Database Management</h1>
+    <nav>
+      <ul>
+        <li><a href="singup.html">Sign Up</a></li> <!-- Link to Sign Up page -->
+        <li><a href="login.html">Login</a></li>  <!-- Link to Login page -->
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <h2>Update Patient</h2>
+  <form id="updatePatientForm">
+    <label for="patient_id">Patient ID:</label>
+    <input type="number" id="patient_id" name="patient_id" required><br><br>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required><br><br>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="M">Male</option>
+      <option value="F">Female</option>
+      <option value="O">Other</option>
+    </select><br><br>
+
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" name="phone" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="address">Address:</label>
+    <textarea id="address" name="address" required></textarea><br><br>
+
+    <button type="submit">Update Patient</button>
+  </form>
+  <footer>
+    <p>&copy; 2024 Hospital Management System. All Rights Reserved.</p>
+  </footer>
+  <script>
+    document.getElementById('updatePatientForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const formData = {
+        patient_id: document.getElementById('patient_id').value,
+        name: document.getElementById('name').value,
+        age: document.getElementById('age').value,
+        gender: document.getElementById('gender').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        address: document.getElementById('address').value
+      };
+
+      fetch(`http://localhost:3001/patients/${formData.patient_id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => alert(data.message))
+      .catch(error => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>

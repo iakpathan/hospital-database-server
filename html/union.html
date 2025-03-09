@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Database Management - UNION</title>
+  <link rel="stylesheet" href="..\css\styles.css">
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <h1>Hospital Database Management - Perform UNION</h1>
+    <nav>
+      <ul>
+        <li><a href="singup.html">Sign Up</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Union Query Form -->
+  <div class="container">
+    <h3>Enter SQL Queries for UNION</h3>
+    <form id="unionForm">
+      <label for="query1">Query 1:</label>
+      <input type="text" id="unionQuery1" placeholder="Enter first query"><br><br>
+      <label for="query2">Query 2:</label>
+      <input type="text" id="unionQuery2" placeholder="Enter second query"><br><br>
+      <button type="button" onclick="performUnion()">Submit UNION</button>
+    </form>
+  </div>
+
+  <!-- Display Results -->
+  <div class="container">
+    <h3>UNION Results</h3>
+    <table border="1" id="unionTable" style="margin-top: 20px; display: none;">
+      <thead>
+        <tr id="columnHeaders">
+          <!-- Dynamic column headers will be inserted here -->
+        </tr>
+      </thead>
+      <tbody id="unionTableBody">
+        <!-- Dynamic rows will be inserted here -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2024 Hospital Management System. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Function to perform UNION query and display the results
+    function performUnion() {
+      const query1 = document.getElementById('unionQuery1').value;
+      const query2 = document.getElementById('unionQuery2').value;
+
+      // Ensure both queries are provided
+      if (!query1 || !query2) {
+        alert('Please enter both queries.');
+        return;
+      }
+
+      // Perform the UNION operation via a POST request to the server
+      fetch('http://localhost:3001/union', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query1, query2 })
+      })
+      .then(response => response.json())
+      .then(data => {
+        const table = document.getElementById('unionTable');
+        const tableBody = document.getElementById('unionTableBody');
+        const columnHeaders = document.getElementById('columnHeaders');
+
+        // Clear any existing rows and headers
+        tableBody.innerHTML = '';
+        columnHeaders.innerHTML = '';
+
+        // Add column headers dynamically based on the column names from the server
+        data.columnNames.forEach(column => {
+          const th = document.createElement('th');
+          th.innerText = column;
+          columnHeaders.appendChild(th);
+        });
+
+        // Add rows dynamically based on the union results
+        data.rows.forEach(row => {
+          const tr = document.createElement('tr');
+          data.columnNames.forEach(column => {
+            const td = document.createElement('td');
+            td.innerText = row[column] || 'N/A'; // Show 'N/A' if the column doesn't exist in the row
+            tr.appendChild(td);
+          });
+          tableBody.appendChild(tr);
+        });
+
+        // Display the table
+        table.style.display = 'table';
+      })
+      .catch(error => {
+        console.error('Error fetching union results:', error);
+        alert('An error occurred while fetching the union results.');
+      });
+    }
+  </script>
+
+</body>
+</html>

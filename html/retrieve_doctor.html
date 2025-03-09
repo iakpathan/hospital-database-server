@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retrieve Doctors</title>
+  <link rel="stylesheet" href="..\css\styles.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <h1>Hospital Database Management</h1>
+    <nav>
+      <ul>
+        <li><a href="singup.html">Sign Up</a></li> <!-- Link to Sign Up page -->
+        <li><a href="login.html">Login</a></li>  <!-- Link to Login page -->
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <h2>Retrieve Doctors</h2>
+  <button id="fetchDoctors">Fetch All Doctors</button>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Doctor ID</th>
+        <th>Name</th>
+        <th>Specialization</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Experience (Years)</th>
+        <th>Availability</th>
+      </tr>
+    </thead>
+    <tbody id="doctorTable"></tbody>
+  </table>
+
+  <script>
+    document.getElementById('fetchDoctors').addEventListener('click', async () => {
+      try {
+        const response = await fetch('http://localhost:3001/doctors');
+        const doctors = await response.json();
+
+        const doctorTable = document.getElementById('doctorTable');
+        doctorTable.innerHTML = ''; // Clear table
+
+        doctors.forEach(doctor => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${doctor.doctor_id}</td>
+            <td>${doctor.name}</td>
+            <td>${doctor.specialization}</td>
+            <td>${doctor.phone}</td>
+            <td>${doctor.email}</td>
+            <td>${doctor.experience_years}</td>
+            <td>${doctor.availability}</td>
+          `;
+          doctorTable.appendChild(row);
+        });
+      } catch (error) {
+        console.error('Error fetching doctors:', error);
+      }
+    });
+  </script>
+   <footer>
+    <p>&copy; 2024 Hospital Management System. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

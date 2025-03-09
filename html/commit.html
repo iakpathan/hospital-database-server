@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="..\css\styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commit Page</title>
+</head>
+<body>
+
+    <button id="commitButton">Commit</button>
+    <div id="commitMessage" style="display:none;">Commit Successful</div>
+
+    <script>
+        document.getElementById('commitButton').addEventListener('click', function() {
+            // Show success message
+            document.getElementById('commitMessage').style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>

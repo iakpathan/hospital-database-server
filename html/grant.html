@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grant Privileges - Database Operations</title>
+  <link rel="stylesheet" href="..\css\styles.css">
+</head>
+<body>
+
+  <h1>Grant Privileges to Database User</h1>
+
+  <!-- Form for granting privileges -->
+  <div class="container">
+    <form id="grantForm">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter the username" required>
+
+      <label for="database">Database</label>
+      <input type="text" id="database" placeholder="Enter the database name" required>
+
+      <label for="table">Table</label>
+      <input type="text" id="table" placeholder="Enter the table name" required>
+
+      <label for="privileges">Privileges</label>
+      <select id="privileges" required>
+        <option value="SELECT">SELECT</option>
+        <option value="INSERT">INSERT</option>
+        <option value="UPDATE">UPDATE</option>
+        <option value="DELETE">DELETE</option>
+        <option value="ALL PRIVILEGES">ALL PRIVILEGES</option>
+      </select>
+
+      <label for="host">Host</label>
+      <input type="text" id="host" placeholder="Enter host (e.g., localhost)" required>
+
+      <button type="button" onclick="grantPrivileges()">Grant Privileges</button>
+    </form>
+    
+    <div id="message" class="message"></div>
+  </div>
+
+  <script>
+    // Function to perform the GRANT operation
+    function grantPrivileges() {
+      const username = document.getElementById('username').value;
+      const database = document.getElementById('database').value;
+      const table = document.getElementById('table').value;
+      const privileges = document.getElementById('privileges').value;
+      const host = document.getElementById('host').value || 'localhost';  // Default to 'localhost' if not provided
+
+      // Validate form fields
+      if (!username || !database || !table || !privileges || !host) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // Show a loading message
+      document.getElementById('message').innerText = 'Processing your request...';
+
+      // Send the GRANT request to the server
+      fetch('http://localhost:3001/grant', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, database, table, privileges, host })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Display success or error message based on the response
+        if (data.success) {
+          document.getElementById('message').innerText = `Privileges '${privileges}' granted successfully to '${username}' on '${table}' in '${database}'.`;
+        } else {
+          document.getElementById('message').innerText = `Error: ${data.error}`;
+        }
+      })
+      .catch(error => {
+        console.error('Error granting privileges:', error);
+        document.getElementById('message').innerText = 'An error occurred while granting privileges.';
+      });
+    }
+  </script>
+
+  <footer>
+    <p>&copy; 2024 Hospital Management System. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

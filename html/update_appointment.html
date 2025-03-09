@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Appointment</title>
+  <link rel="stylesheet" href="..\css\styles.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <h1>Hospital Database Management</h1>
+    <nav>
+      <ul>
+        <li><a href="singup.html">Sign Up</a></li> <!-- Link to Sign Up page -->
+        <li><a href="login.html">Login</a></li>  <!-- Link to Login page -->
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <h2>Update Appointment</h2>
+  <form id="updateAppointmentForm">
+    <label for="appointment_id">Appointment ID:</label>
+    <input type="number" id="appointment_id" name="appointment_id" required><br><br>
+
+    <label for="doctor_id">Doctor ID:</label>
+    <input type="number" id="doctor_id" name="doctor_id"><br><br>
+
+    <label for="patient_id">Patient ID:</label>
+    <input type="number" id="patient_id" name="patient_id"><br><br>
+
+    <label for="appointment_date">Appointment Date (yyyy-mm-dd):</label>
+    <input type="date" id="appointment_date" name="appointment_date"><br><br>
+
+    <label for="reason">Reason:</label>
+    <input type="text" id="reason" name="reason"><br><br>
+
+    <label for="status">Status:</label>
+    <select id="status" name="status">
+      <option value="Scheduled">Scheduled</option>
+      <option value="Completed">Completed</option>
+      <option value="Cancelled">Cancelled</option>
+    </select><br><br>
+
+    <button type="submit">Update Appointment</button>
+  </form>
+
+  <footer>
+    <p>&copy; <span id="year"></span> HospitalDataBase. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('updateAppointmentForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const formData = {
+        appointment_id: document.getElementById('appointment_id').value,
+        doctor_id: document.getElementById('doctor_id').value,
+        patient_id: document.getElementById('patient_id').value,
+        appointment_date: document.getElementById('appointment_date').value,
+        reason: document.getElementById('reason').value,
+        status: document.getElementById('status').value
+      };
+
+      fetch(`http://localhost:3001/appointments/${formData.appointment_id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.message);
+        if (data.message === 'Appointment updated successfully') {
+          document.getElementById('updateAppointmentForm').reset();
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Error updating appointment');
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

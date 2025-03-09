@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Database Management</title>
+  <link rel="stylesheet" href="..\css\styles.css">
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <h1>Hospital Database Management</h1>
+    
+    <nav>
+      <ul>
+        <li><a href="singup.html">Sign Up</a></li> <!-- Link to Sign Up page -->
+        <li><a href="login.html">Login</a></li>  <!-- Link to Login page -->
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content Section -->
+  <div class="container">
+    <h2>Select a Category</h2>
+    <button onclick="showOptions('patient')">Patient Operations</button>
+    <button onclick="showOptions('doctor')">Doctor Operations</button>
+    <button onclick="showOptions('appointment')">Appointment Operations</button>
+    <button onclick="showOptions('database')">Database Operations</button>
+  </div>
+
+  <!-- Patient Operations -->
+  <div class="container" id="patient-operations" style="display: none;">
+    <h2>Patient Operations</h2>
+    <button onclick="window.location.href='insert_patient.html'">Insert Patient</button>
+    <button onclick="window.location.href='retrieve_patient.html'">Retrieve Patients</button>
+    <button onclick="window.location.href='update_patient.html'">Update Patient</button>
+    <button onclick="window.location.href='delete_patient.html'">Delete Patient</button>
+  </div>
+
+  <!-- Doctor Operations -->
+  <div class="container" id="doctor-operations" style="display: none;">
+    <h2>Doctor Operations</h2>
+    <button onclick="window.location.href='insert_doctor.html'">Insert Doctor</button>
+    <button onclick="window.location.href='retrieve_doctor.html'">Retrieve Doctors</button>
+    <button onclick="window.location.href='update_doctor.html'">Update Doctor</button>
+    <button onclick="window.location.href='delete_doctor.html'">Delete Doctor</button>
+  </div>
+
+  <!-- Appointment Operations -->
+  <div class="container" id="appointment-operations" style="display: none;">
+    <h2>Appointment Operations</h2>
+    <button onclick="window.location.href='insert_appointment.html'">Insert Appointment</button>
+    <button onclick="window.location.href='retrieve_appointment.html'">Retrieve Appointments</button>
+    <button onclick="window.location.href='update_appointment.html'">Update Appointment</button>
+    <button onclick="window.location.href='delete_appointment.html'">Delete Appointment</button>
+  </div>
+
+  <!-- Database Operations -->
+  <div class="container" id="database-operations" style="display: none;">
+    <h2>Database Operations</h2>
+    <button onclick="window.location.href='truncate.html'">Truncate Table</button>
+    <button onclick="window.location.href='commit.html'">Commit Transaction</button>
+     
+
+    <button onclick="window.location.href='grant.html'">Grant Permissions</button>
+    <button onclick="window.location.href='revoke.html'">Revoke Permissions</button>
+    <button onclick="window.location.href='rollback.html'">Rollback Transaction</button>
+    <button onclick="window.location.href='joins.html'">Perform Joins</button>
+    <button onclick="window.location.href='union.html'">Perform Union</button>
+    <button onclick="window.location.href='view.html'">Manage Views</button>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2024 Hospital Management System. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript for dynamic content -->
+  <script>
+    function showOptions(type) {
+      // Hide all operation containers
+      document.getElementById('patient-operations').style.display = 'none';
+      document.getElementById('doctor-operations').style.display = 'none';
+      document.getElementById('appointment-operations').style.display = 'none';
+      document.getElementById('database-operations').style.display = 'none';
+
+      // Show the selected operation container
+      if (type === 'patient') document.getElementById('patient-operations').style.display = 'block';
+      if (type === 'doctor') document.getElementById('doctor-operations').style.display = 'block';
+      if (type === 'appointment') document.getElementById('appointment-operations').style.display = 'block';
+      if (type === 'database') document.getElementById('database-operations').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
