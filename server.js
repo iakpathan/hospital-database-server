@@ -13,7 +13,7 @@ app.use(bodyParser.json()); // Parse JSON request bodies (double inclusion, opti
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'Pathan@2005', // Replace with your MySQL password
+  password: 'your pass', // Replace with your MySQL password
   database: 'hospitaldb', // Replace with your database name
 });
 
