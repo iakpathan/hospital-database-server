@@ -1,0 +1,333 @@
+ /* Fixed Header Styling */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(24, 111, 242, 0.8); /* Semi-transparent blue */
+  color: #ffffff; /* Set text color to white */
+  padding: 15px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* Header Title */
+header h1 {
+  font-size: 36px;
+  margin: 0;
+  color: white; /* White color for the header title */
+}
+
+header nav ul {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+header nav ul li {
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #ffffff; /* Set navigation links to white */
+  font-size: 16px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+  color: #ffeb3b;
+}
+
+
+main {
+  margin-top: 10px;
+  padding:10px /* Adds space below the header */
+}
+
+ /* Apply a blurred effect to the background */
+body {
+  padding-top: 120px; /* Space for the fixed header */
+  margin: 0;
+  font-family: Arial, sans-serif;
+   
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: rgb(15, 2, 2);
+  position: relative;
+  transition: filter 0.3s ease-in-out; /* Smooth transition for blur effect */
+}
+
+/* Apply a backdrop blur to the body when the operation container is active */
+body.blur-background {
+  filter: blur(8px); /* Blur the entire background */
+  transition: filter 0.3s ease-in-out;
+}
+
+/* Compact Form Container */
+ /* Container for Forms */
+.container, .operations-container {
+  display: flex;               /* Enable flexbox */
+  flex-direction: column;      /* Stack items vertically */
+  justify-content: center;     /* Center content vertically */
+  align-items: center;         /* Center content horizontally */
+  background-color: rgba(255, 255, 255, 0.9); /* White with transparency */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 50%;                  /* Container width */
+  max-width: 400px;            /* Max width for compact form */
+  margin: 50px auto;           /* Center horizontally with margin */
+  text-align: center;          /* Center text inside */
+  font-size: 16px;
+  z-index: 10;
+  position: relative;
+  height: 100%;                /* Ensure it takes full height of the container */
+}
+
+/* Ensure the body or parent container takes the full height */
+body {
+  display: flex;
+  flex-direction: column;      /* Stack elements vertically */
+  height: 100vh;               /* Full viewport height */
+  justify-content: center;     /* Center the entire page content */
+  align-items: center;         /* Center horizontally */
+  margin: 0;
+}
+
+
+/* Container header style */
+.container h2 {
+  font-size: 24px;
+  color: #186ff2;
+  margin-bottom: 15px;
+}
+
+/* Button Styling */
+button {
+  background-color: #4CAF50; /* Green background */
+  border: none;
+  color: white;
+  padding: 10px 20px; /* Smaller padding for compact size */
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%; /* Full width button */
+  margin-top: 15px; /* Space above button */
+}
+
+button:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+}
+/*/* Operations Container */
+.operations-container {
+  background-color: rgba(255, 255, 255, 0.95); /* White with slight transparency */
+  padding: 100px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 50%; /* Same narrow container width */
+  max-width: 400px;
+  margin: 50px auto; /* Center horizontally */
+  text-align: center;
+  z-index: 10;
+}
+
+/* Operations container header style */
+.operations-container h2 {
+  font-size: 22px;
+  color: #186ff2;
+  margin-bottom: 15px;
+}
+
+.operations-buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.operations-buttons button {
+  background-color: #186ff2;
+  color: rgb(143, 21, 21);
+  border: none;
+  padding: 10px 18px; /* Slightly smaller padding */
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.operations-buttons button:hover {
+  background-color: #135bb5;
+  transform: scale(1.05);
+}
+
+
+/* Footer Styling */
+footer {
+  background-color: rgba(24, 111, 242, 0.8);
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 14px;
+}
+
+
+
+html, body {
+  height: 100%; /* Ensure full height layout */
+}
+
+body {
+  display: flex;
+  flex-direction: column; /* Stack header, content, and footer vertically */
+}
+
+.container {
+  flex: 1; /* Allow the container to take up the remaining space */
+}
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #1e293b; /* Dark blue background for modern look */
+    color: #ffffff;
+}
+
+/* Center Container */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #2d3748; /* Slightly lighter for content box */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Title */
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #63b3ed; /* Light blue title */
+}
+
+/* Form Styling */
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    margin-right: 10px;
+    color: #a0aec0;
+}
+
+input, select, button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    border: 1px solid #4a5568; /* Light gray for borders */
+    border-radius: 5px;
+    background-color: #2c3e50; /* Dark input background */
+    color: #ffffff;
+    outline: none;
+}
+
+input::placeholder {
+    color: #a0aec0;
+}
+
+button {
+    width: auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3182ce; /* Blue button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2b6cb0; /* Darker blue on hover */
+}
+
+/* Results Section */
+#results {
+    display: none; /* Hidden initially */
+}
+
+h3 {
+    color: #edf2f7;
+    margin-bottom: 10px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #4a5568; /* Gray background for table headers */
+    color: #ffffff;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #2c3e50; /* Border around table cells */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #2d3748; /* Alternating row color */
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #3b4956;
+}
+
+td {
+    color: #edf2f7;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    input, select, button {
+        width: 100%;
+    }
+
+    table {
+        font-size: 12px;
+    }
+}
