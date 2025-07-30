@@ -1,11 +1,11 @@
 
-# 🏥 Hospital Database Management System
+# Hospital Database Management System
 
 This is a web-based hospital management application developed using **Node.js**, **Express.js**, **MySQL**, **HTML/CSS**, and JavaScript. The system allows patients, doctors, and appointments to be managed efficiently with CRUD functionality.
 
 ---
 
-## 🧰 Requirements
+## Requirements
 
 Before setting up this project, make sure you have the following installed:
 
@@ -17,7 +17,7 @@ Before setting up this project, make sure you have the following installed:
 
 ---
 
-## 🔧 Pre-installation Steps
+##  Pre-installation Steps
 
 1. **Clone the repository**:
    ```bash
@@ -59,7 +59,7 @@ Before setting up this project, make sure you have the following installed:
 
 ---
 
-## 📁 Folder & File Structure
+## Folder & File Structure
 
 ```
 hospital-management-system/
@@ -93,7 +93,7 @@ hospital-management-system/
 
 ---
 
-## 📌 Notes
+##  Notes
 
 * Make sure MySQL is running before you start the server.
 * Adjust port and database credentials as per your environment.
@@ -101,7 +101,7 @@ hospital-management-system/
 
 ---
 
-## 🚀 Future Enhancements
+## Future Enhancements
 
 * Add email/SMS notifications.
 * Dashboard with analytics and charts.
@@ -110,7 +110,7 @@ hospital-management-system/
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 Developed by **[iakpathan](https://github.com/iakpathan)** – for academic and learning purposes.
 
