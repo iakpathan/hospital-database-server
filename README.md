@@ -82,14 +82,14 @@ hospital-management-system/
 
 ---
 
-## 🔑 Key Features
+## Key Features
 
-* 🔐 **User Authentication**: Secure signup and login using bcrypt.
-* 📋 **Patient Records**: CRUD operations on patient data.
-* 🩺 **Doctor Management**: Add, update, view, or delete doctor entries.
-* 📆 **Appointments**: Book and manage appointments between patients and doctors.
-* 🔁 **API Integration**: RESTful API support with JSON communication.
-* 💾 **MySQL Database**: Handles all structured data operations.
+*  **User Authentication**: Secure signup and login using bcrypt.
+*  **Patient Records**: CRUD operations on patient data.
+*  **Doctor Management**: Add, update, view, or delete doctor entries.
+*  **Appointments**: Book and manage appointments between patients and doctors.
+*  **API Integration**: RESTful API support with JSON communication.
+*  **MySQL Database**: Handles all structured data operations.
 
 ---
 
@@ -116,8 +116,4 @@ Developed by **[iakpathan](https://github.com/iakpathan)** – for academic and 
 
 ---
 
-```
-
-Let me know if you want to include the database schema or usage screenshots as part of the `README.md`.
-```
 
